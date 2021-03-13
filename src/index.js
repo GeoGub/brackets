@@ -11,13 +11,18 @@ module.exports = function check(str, bracketsConfig) {
       ']': '[',
       '}': '{',
       '|': '|',
+      '2': '1',
+      '4': '3',
+      '6': '5',
+      '7': '7',
+      '8': '8',
     }
   }
   console.log(brackets.data)
   brackets.data.forEach(thisChar => {
     if (brackets.bracket[thisChar] === brackets.lastChar) {
       brackets.lastChar = brackets.prviusChars.shift()
-    } else if ((thisChar === '(') || (thisChar === '[') || (thisChar === '{' || thisChar === '|')) {
+    } else if (Object.values(brackets.bracket).indexOf(thisChar) != -1) {
       brackets.prviusChars.unshift(brackets.lastChar)
       brackets.lastChar = thisChar
     } else if (brackets.bracket[thisChar] != brackets.lastChar) {
